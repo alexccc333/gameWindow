@@ -86,7 +86,7 @@ function shuffle(array) {
          console.log(pos1 + pos2 + color)
          if (this.blockColor==color){
 
-                 document.querySelector(`.game-block[data-x="${pos1}"][data-y="${pos1}"]`).classList.remove('white');
+                 document.querySelector(`.game-block[data-x="${pos1}"][data-y="${pos2}"]`).classList.remove('white');
                  document.querySelector(`.game-block[data-x="${this.id1}"][data-y="${this.id2}"]`).classList.remove('white');
 
          }
@@ -94,7 +94,7 @@ function shuffle(array) {
              setTimeout(function () {
                  document.querySelector(`.game-block[data-x="${pos1}"][data-y="${pos2}"]`).classList.add('white');
                  document.querySelector(`.game-block[data-x="${this.id1}"][data-y="${this.id2}"]`).classList.add('white');
-             }, 1000);
+             }, 500);
          }
          console.log(this.status);
          this.status = 1;
