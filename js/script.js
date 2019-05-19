@@ -9,6 +9,7 @@ var id1;
 var id2;
 var blockColor;
 let m=0;
+var gameCount=0;
 var gameColor= [
         'class="blue game-block" data-i="1"',
         'class="yellow game-block" data-i="2"',
@@ -58,7 +59,7 @@ function draw() {
         }
     }
 }
-draw();
+
 function gameStart(){
 
     let x=this.dataset.x;
@@ -88,7 +89,10 @@ function shuffle(array) {
 
                  document.querySelector(`.game-block[data-x="${pos1}"][data-y="${pos2}"]`).classList.remove('white');
                  document.querySelector(`.game-block[data-x="${this.id1}"][data-y="${this.id2}"]`).classList.remove('white');
-
+                 this.gameCount+=1;
+                 if(this.gameCount==8){
+                     setTimeout(function(){alert("gameStop"),1000});
+                 }
          }
      else {
              setTimeout(function () {
@@ -101,3 +105,12 @@ function shuffle(array) {
      }
 
  }
+
+var timer = 0;
+document.getElementById('start').onclick = function(){draw();timer = new Date().getTime()}
+document.getElementById('stop').onclick = function(){timer = 0}
+
+var interval = setInterval(function(){
+    if (timer==0) return;
+    document.getElementById('timer').innerHTML = (new Date().getTime()-timer)/1000
+},100);
